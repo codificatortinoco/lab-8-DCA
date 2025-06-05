@@ -1,3 +1,5 @@
+console.log('index.ts script started');
+
 import './Root/Root'; // Import the Root custom element
 
 document.addEventListener('DOMContentLoaded', () => {

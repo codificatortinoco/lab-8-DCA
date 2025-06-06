@@ -94,7 +94,7 @@ export const getMemes = async (): Promise<Meme[]> => {
       .list(MEMES_FOLDER, {
         limit: 100,
         offset: 0,
-        sortBy: { column: "name", order: "desc" },
+        sortBy: { column: "created_at", order: "asc" },
       });
 
     if (error) {

@@ -59,7 +59,7 @@ export class UploadForm extends HTMLElement {
             </style>
             <div class="upload-section">
                 <button>Upload Meme</button>
-                <input type="file" accept="image/*,video/*" style="display: none;">
+                <input type="file" accept="image/*,video/*" style="display: none;" multiple>
                 <div class="loading-indicator">Uploading...</div>
                 <div class="error-message"></div>
             </div>
@@ -72,26 +72,41 @@ export class UploadForm extends HTMLElement {
         });
 
         this.fileInput.addEventListener('change', async (event) => {
-            const file = (event.target as HTMLInputElement).files?.[0];
-            if (file) {
-                await this.handleFileUpload(file);
+            const files = (event.target as HTMLInputElement).files;
+            if (files && files.length > 0) {
+                await this.handleFileUpload(files);
             }
         });
     }
 
-    private async handleFileUpload(file: File): Promise<void> {
+    private async handleFileUpload(files: FileList): Promise<void> {
         this.setLoading(true);
         this.setError(null);
         try {
-            const uploadedMeme = await uploadMeme(file);
-            // Dispatch a custom event to notify the parent (GalleryPage)
-            this.dispatchEvent(new CustomEvent('memeuploaded', {
-                detail: uploadedMeme,
-                bubbles: true,
-                composed: true,
-            }));
+            // Convert FileList to array for easier iteration
+            const fileArray = Array.from(files);
+
+            // Process each file
+            const uploadPromises = fileArray.map(async (file) => {
+                try {
+                    const uploadedMeme = await uploadMeme(file);
+                    this.dispatchEvent(new CustomEvent('memeuploaded', {
+                        detail: uploadedMeme,
+                        bubbles: true,
+                        composed: true,
+                    }));
+                } catch (error: any) {
+                    console.error('Upload failed for file ' + file.name + ':', error);
+                    // Optionally set a specific error message per file or collect errors
+                    this.setError('Failed to upload ' + file.name + ': ' + (error.message || 'Unknown error'));
+                }
+            });
+
+            // Wait for all uploads to complete
+            await Promise.all(uploadPromises);
+
         } catch (error: any) {
-            console.error('Upload failed:', error);
+            console.error('Overall upload process failed:', error);
             this.setError(error.message || 'An error occurred during upload.');
         } finally {
             this.setLoading(false);

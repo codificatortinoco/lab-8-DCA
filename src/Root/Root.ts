@@ -27,7 +27,7 @@ export class Root extends HTMLElement {
 
         .header h1 {
             margin: 0;
-            color: #4CAF50;
+            color: #ff7e5f;
         }
       </style>
       <header class="header">

@@ -15,12 +15,7 @@ export class GalleryPage extends HTMLElement {
           max-width: 1200px;
           margin: 0 auto;
         }
-        h1 {
-            text-align: center;
-            color: #1a1a1a;
-            margin-bottom: 30px;
-            font-size: 2.5rem;
-        }
+     
       </style>
       <div class="gallery-page">
         <meme-gallery></meme-gallery>

@@ -25,9 +25,9 @@ export class UploadForm extends HTMLElement {
                     text-align: center;
                 }
 
-                .upload-button {
+                button {
                     padding: 14px 28px;
-                    background: linear-gradient(to right, #6a11cb, #2575fc);
+                    background: linear-gradient(to right, #ff7e5f, #feb47b);
                     color: white;
                     border: none;
                     border-radius: 25px;
@@ -38,7 +38,7 @@ export class UploadForm extends HTMLElement {
                     transition: all 0.3s ease;
                 }
 
-                .upload-button:hover {
+                button:hover {
                     background: linear-gradient(to right, #2575fc, #6a11cb);
                     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
                 }

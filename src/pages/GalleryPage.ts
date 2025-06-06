@@ -23,7 +23,6 @@ export class GalleryPage extends HTMLElement {
         }
       </style>
       <div class="gallery-page">
-        <h1>MemeWall Gallery</h1>
         <meme-gallery></meme-gallery>
       </div>
     `;

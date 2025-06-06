@@ -26,17 +26,21 @@ export class UploadForm extends HTMLElement {
                 }
 
                 .upload-button {
-                    padding: 10px 20px;
-                    background-color: #4CAF50;
+                    padding: 14px 28px;
+                    background: linear-gradient(to right, #6a11cb, #2575fc);
                     color: white;
                     border: none;
-                    border-radius: 4px;
+                    border-radius: 25px;
                     cursor: pointer;
-                    font-size: 16px;
+                    font-size: 18px;
+                    font-weight: bold;
+                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+                    transition: all 0.3s ease;
                 }
 
                 .upload-button:hover {
-                    background-color: #45a049;
+                    background: linear-gradient(to right, #2575fc, #6a11cb);
+                    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
                 }
 
                 .loading-indicator {

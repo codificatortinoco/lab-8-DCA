@@ -24,6 +24,8 @@ export class UploadForm extends HTMLElement {
                     margin-bottom: 20px;
                     text-align: center;
                 }
+                h3 {
+                color: #ff7e5f}
 
                 button {
                     padding: 14px 28px;
@@ -58,6 +60,7 @@ export class UploadForm extends HTMLElement {
                 }
             </style>
             <div class="upload-section">
+            <h3> Choose as many documents to upload even in one go!!!</h3>
                 <button>Upload Meme</button>
                 <input type="file" accept="image/*,video/*" style="display: none;" multiple>
                 <div class="loading-indicator">Uploading...</div>

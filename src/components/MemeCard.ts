@@ -81,7 +81,6 @@ export class MemeCard extends HTMLElement {
                         ? `<video controls src="${url}"></video>`
                         : `<img src="${url}" alt="${name}">`}
                 </div>
-                <div class="meme-info">${name}</div>
             </div>
         `;
   }
